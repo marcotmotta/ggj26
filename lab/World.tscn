@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://bi6vekfr7fjwx"]
+
+[ext_resource type="Script" uid="uid://b8hwr560i6myv" path="res://lab/camera_controller.gd" id="1_ehurd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k5hrn"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ehurd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o0y8a"]
+albedo_color = Color(0, 0.39215687, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_o0y8a"]
+
+[node name="World" type="Node3D" unique_id=1108411967]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2097769246]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Ground" type="Node3D" parent="." unique_id=646917053]
+transform = Transform3D(10, 0, 0, 0, 0.05, 0, 0, 0, 10, 0, -0.05, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground" unique_id=1239798878]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D" unique_id=952855282]
+shape = SubResource("BoxShape3D_k5hrn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=1308864467]
+mesh = SubResource("BoxMesh_ehurd")
+surface_material_override/0 = SubResource("StandardMaterial3D_o0y8a")
+
+[node name="Character" type="Node3D" parent="." unique_id=417958035]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Character" unique_id=1127698930]
+mesh = SubResource("BoxMesh_o0y8a")
+
+[node name="CustomCamera" type="Node3D" parent="Character" unique_id=352120595]
+
+[node name="Center" type="Node3D" parent="Character/CustomCamera" unique_id=1561273653]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="YawPivot" type="Node3D" parent="Character/CustomCamera/Center" unique_id=14378566]
+script = ExtResource("1_ehurd")
+
+[node name="PitchPivot" type="Node3D" parent="Character/CustomCamera/Center/YawPivot" unique_id=1222556097]
+
+[node name="Camera3D" type="Camera3D" parent="Character/CustomCamera/Center/YawPivot/PitchPivot" unique_id=1602157898]
+
+[node name="Marker3D" type="Marker3D" parent="Character/CustomCamera/Center" unique_id=750510929]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Character/CustomCamera" unique_id=804391868]
+
+[node name="Control" type="Control" parent="Character/CustomCamera/CanvasLayer" unique_id=1641554223]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="ColorRect" type="ColorRect" parent="Character/CustomCamera/CanvasLayer/Control" unique_id=37515633]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.5
+offset_top = -2.5
+offset_right = 2.5
+offset_bottom = 2.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(1, 0, 1, 1)
