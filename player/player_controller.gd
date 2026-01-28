@@ -1,11 +1,16 @@
 extends CharacterBody3D
 
 @export var move_speed := 6.0
+@export var jump_velocity := 6.5
 @export var gravity := 20.0
-@export var turn_speed := 10.0
+@export var turn_speed := 12.0
 
 @onready var cam_yaw_pivot := $CameraRig/Center/YawPivot
 @onready var visual := $Visual
+
+func _process(delta):
+	# Align to camera direction.
+	visual.rotation.y = lerp_angle(visual.rotation.y, cam_yaw_pivot.global_rotation.y, turn_speed * delta)
 
 func _physics_process(delta):
 	var input_dir := Vector2.ZERO
@@ -27,18 +32,16 @@ func _physics_process(delta):
 
 		movement_dir = (right * input_dir.x + forward * input_dir.y).normalized()
 
-		# Rotate player visual to camera direction.
-		visual.rotation.y = lerp_angle(visual.rotation.y, atan2(movement_dir.x, movement_dir.z), turn_speed * delta)
-
 	# Horizontal movement.
 	velocity.x = movement_dir.x * move_speed
 	velocity.z = movement_dir.z * move_speed
 
-	# Gravity.
-	if not is_on_floor():
-		velocity.y -= gravity * delta
+	# Vertical movement.
+	if is_on_floor():
+		if Input.is_action_just_pressed("jump"):
+			velocity.y = jump_velocity
 
 	else:
-		velocity.y = 0
+		velocity.y -= gravity * delta
 
 	move_and_slide()

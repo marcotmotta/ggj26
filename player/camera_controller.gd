@@ -21,7 +21,7 @@ func _ready():
 	camera.position = Vector3(0, 0, zoom) # This places the camera behind the character.
 
 func _input(event):
-	if Input.is_action_just_pressed("esc"):
+	if Input.is_action_just_pressed("esc"):  # Debug?
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE else Input.MOUSE_MODE_VISIBLE)
 
 func _unhandled_input(event):
@@ -46,5 +46,5 @@ func _unhandled_input(event):
 		target_zoom = clamp(target_zoom, min_zoom, max_zoom)
 
 func _process(delta):
-	zoom = lerp(zoom, target_zoom, zoom_smoothness * delta) # Smooth interpolation.
+	zoom = lerp(zoom, target_zoom, zoom_smoothness * delta)
 	camera.position.z = zoom
