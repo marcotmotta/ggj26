@@ -1,8 +1,8 @@
 extends CharacterBody3D
 
-@export var move_speed := 6.0
-@export var jump_velocity := 6.5
-@export var gravity := 20.0
+@export var move_speed := 10.0
+@export var jump_velocity := 25
+@export var gravity := 50.0
 @export var turn_speed := 12.0
 
 @onready var cam_yaw_pivot := $CameraRig/Center/YawPivot
