@@ -8,11 +8,19 @@ extends CharacterBody3D
 @onready var cam_yaw_pivot := $CameraRig/Center/YawPivot
 @onready var visual := $Visual
 
+@onready var max_health = 100
+@onready var health = 100
+@onready var healthbar = $CameraRig/CanvasLayer/HealthBar
+
 var curr_mask_type = null
 
 func _process(delta):
 	# Align to camera direction.
 	visual.rotation.y = lerp_angle(visual.rotation.y, cam_yaw_pivot.global_rotation.y, turn_speed * delta)
+
+	# Update UI
+	healthbar.max_value = max_health
+	healthbar.value = health
 
 func _physics_process(delta):
 	var input_dir := Vector2.ZERO
@@ -71,3 +79,7 @@ func add_mask(type):
 			print("Add Mask2")
 
 	curr_mask_type = type
+
+func take_damage(amount):
+	print(amount)
+	health = max(0, health - amount)

@@ -16,8 +16,13 @@ emission_energy_multiplier = 10.0
 material = SubResource("StandardMaterial3D_xkw1x")
 size = Vector3(0.5, 0.5, 0.5)
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_xkw1x"]
+radius = 1.2
+
 [node name="Enemy" type="CharacterBody3D" unique_id=501243503]
-wall_min_slide_angle = 0.0
+wall_min_slide_angle = 0.08726646
+floor_block_on_wall = false
+floor_max_angle = 0.08726646
 script = ExtResource("1_xkw1x")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=656147368]
@@ -33,3 +38,10 @@ shape = SubResource("CapsuleShape3D_ogxq4")
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=379892970]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.34680784, -0.36656082)
 mesh = SubResource("BoxMesh_43lb5")
+
+[node name="HitArea" type="Area3D" parent="." unique_id=1885571670]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitArea" unique_id=739661083]
+shape = SubResource("CylinderShape3D_xkw1x")
+
+[connection signal="body_entered" from="HitArea" to="." method="_on_hit_area_body_entered"]

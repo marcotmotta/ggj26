@@ -29,6 +29,14 @@ material = SubResource("StandardMaterial3D_wnvi2")
 size = Vector2(1, 1)
 orientation = 2
 
+[sub_resource type="Theme" id="Theme_3c3w1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wnvi2"]
+bg_color = Color(0, 0, 0, 0.39215687)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_83hs8"]
+bg_color = Color(0.4333334, 1, 0, 1)
+
 [node name="Player" type="CharacterBody3D" unique_id=1288974800 groups=["player"]]
 script = ExtResource("1_3c3w1")
 
@@ -72,6 +80,17 @@ script = ExtResource("2_wnvi2")
 [node name="Camera3D" type="Camera3D" parent="CameraRig/Center/YawPivot/PitchPivot" unique_id=2114739121]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="CameraRig" unique_id=1967782349]
+
+[node name="HealthBar" type="ProgressBar" parent="CameraRig/CanvasLayer" unique_id=755836806]
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 230.0
+offset_bottom = 60.0
+theme = SubResource("Theme_3c3w1")
+theme_override_styles/background = SubResource("StyleBoxFlat_wnvi2")
+theme_override_styles/fill = SubResource("StyleBoxFlat_83hs8")
+value = 50.0
+show_percentage = false
 
 [node name="Control" type="Control" parent="CameraRig/CanvasLayer" unique_id=237587511]
 layout_mode = 3
