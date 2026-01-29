@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bn6wa1w84y8p6"]
+
+[ext_resource type="PackedScene" uid="uid://b5m5bfrmun7ya" path="res://player/teste.fbx" id="1_qge56"]
+
+[node name="teste" unique_id=2109948679 instance=ExtResource("1_qge56")]
