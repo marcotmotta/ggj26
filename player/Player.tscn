@@ -9,6 +9,9 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3c3w1"]
 albedo_color = Color(1, 0, 0, 1)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 5.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wnvi2"]
 material = SubResource("StandardMaterial3D_3c3w1")
@@ -17,6 +20,9 @@ orientation = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wnvi2"]
 albedo_color = Color(0, 0, 1, 1)
+emission_enabled = true
+emission = Color(0, 0, 1, 1)
+emission_energy_multiplier = 5.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_83hs8"]
 material = SubResource("StandardMaterial3D_wnvi2")

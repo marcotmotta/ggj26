@@ -2,11 +2,16 @@
 
 [ext_resource type="PackedScene" uid="uid://w3ywca3d08hw" path="res://player/Player.tscn" id="1_c6gwx"]
 [ext_resource type="PackedScene" uid="uid://ea6ylhjfwjcx" path="res://mask/Mask.tscn" id="2_2dftf"]
+[ext_resource type="PackedScene" uid="uid://b7av5y0wq0swv" path="res://enemies/Enemy.tscn" id="3_bcbcq"]
+
+[sub_resource type="Environment" id="Environment_bcbcq"]
+glow_enabled = true
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_2dftf"]
-vertices = PackedVector3Array(-24.5, 0.99999905, -24.5, -24.5, 0.99999905, 24.5, 24.5, 0.99999905, 24.5, 24.5, 0.99999905, -24.5, -11.507574, 4.999999, 4.9930477, -9.992948, 0.99999905, 3.502449, -12.983357, 0.99999905, 1.9788876, -7.0117664, 0.99999905, 7.979183, -8.487549, 4.999999, 5.0150223, -8.476393, 4.999999, 9.519783, -7.020996, 0.99999905, 10.982357, -7.0229244, 0.99999905, 3.5244236, -9.991019, 0.99999905, 11.010384, -13.001815, 0.99999905, 7.9852333, -11.496417, 4.999999, 9.49781, -13.011044, 0.99999905, 10.988407, -11.47796, 0.99999905, 3.4914608, -12, 0.99999905, 5.5, -12, 0.99999905, 9.25, -8.25, 0.99999905, 9.25, -8.25, 0.99999905, 5.5)
-polygons = [PackedInt32Array(2, 11, 3), PackedInt32Array(3, 11, 0), PackedInt32Array(0, 6, 1), PackedInt32Array(1, 10, 2), PackedInt32Array(2, 7, 11), PackedInt32Array(11, 6, 0), PackedInt32Array(6, 13, 1), PackedInt32Array(10, 7, 2), PackedInt32Array(1, 12, 10), PackedInt32Array(7, 8, 11), PackedInt32Array(11, 5, 6), PackedInt32Array(13, 15, 1), PackedInt32Array(6, 4, 13), PackedInt32Array(10, 9, 7), PackedInt32Array(12, 9, 10), PackedInt32Array(1, 15, 12), PackedInt32Array(8, 5, 11), PackedInt32Array(7, 9, 8), PackedInt32Array(5, 16, 6), PackedInt32Array(13, 14, 15), PackedInt32Array(4, 14, 13), PackedInt32Array(6, 16, 4), PackedInt32Array(12, 14, 9), PackedInt32Array(15, 14, 12), PackedInt32Array(8, 4, 5), PackedInt32Array(9, 14, 8), PackedInt32Array(5, 4, 16), PackedInt32Array(4, 8, 14), PackedInt32Array(20, 19, 17), PackedInt32Array(17, 19, 18)]
-agent_max_climb = 5.0
+vertices = PackedVector3Array(-24.5, 0.99999905, 5.75, -13.25, 0.99999905, 6, -13, 0.99999905, 4.25, -5.25, 0.99999905, 4.25, -5, 0.99999905, -24.5, -24.5, 0.99999905, -24.5, -3.75, 0.99999905, 4.25, -3.75, 1.999999, 4.75, 24.5, 0.99999905, 4.75, -2.263157, 0.99999905, 4.75, 24.5, 0.99999905, -24.5, -5.5, 3.749999, 5.25, -5.5, 3.749999, 9.5, -3.75, 1.999999, 9.5, -3.75, 1.999999, 5.25, -3.75, 0.99999905, 10.5, -5.75, 0.99999905, 24.5, 24.5, 0.99999905, 24.5, -5.75, 0.99999905, 10.5, -2.263157, 0.99999905, 5.2236843, -2.3374996, 0.99999905, 9.262501, -12.25, 5.749999, 5.25, -12.25, 5.749999, 9.5, -8.200001, 5.749999, 9.5, -6.8500004, 4.999999, 9.5, -6.8500004, 4.999999, 5.25, -8.200001, 5.749999, 5.25, -24.5, 0.99999905, 9, -13.25, 0.99999905, 8.75, -13, 0.99999905, 10.5, -11, 0.99999905, 24.5, -11, 0.99999905, 10.5, -24.5, 0.99999905, 24.5)
+polygons = [PackedInt32Array(0, 2, 1), PackedInt32Array(4, 3, 2), PackedInt32Array(0, 5, 2), PackedInt32Array(2, 5, 4), PackedInt32Array(7, 6, 9), PackedInt32Array(9, 6, 8), PackedInt32Array(6, 3, 4), PackedInt32Array(8, 6, 10), PackedInt32Array(10, 6, 4), PackedInt32Array(14, 13, 11), PackedInt32Array(11, 13, 12), PackedInt32Array(16, 15, 17), PackedInt32Array(17, 15, 8), PackedInt32Array(16, 18, 15), PackedInt32Array(14, 7, 19), PackedInt32Array(19, 7, 9), PackedInt32Array(19, 9, 8), PackedInt32Array(13, 14, 20), PackedInt32Array(20, 14, 19), PackedInt32Array(20, 19, 8), PackedInt32Array(13, 20, 15), PackedInt32Array(15, 20, 8), PackedInt32Array(12, 24, 11), PackedInt32Array(11, 24, 25), PackedInt32Array(25, 24, 23), PackedInt32Array(25, 23, 26), PackedInt32Array(26, 23, 22), PackedInt32Array(26, 22, 21), PackedInt32Array(28, 27, 1), PackedInt32Array(1, 27, 0), PackedInt32Array(27, 28, 29), PackedInt32Array(29, 31, 30), PackedInt32Array(27, 29, 32), PackedInt32Array(32, 29, 30), PackedInt32Array(31, 18, 30), PackedInt32Array(30, 18, 16)]
+agent_height = 5.0
+agent_max_climb = 1.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k5hrn"]
 size = Vector3(50, 1, 50)
@@ -20,10 +25,20 @@ albedo_color = Color(0, 0.2690701, 3.6098064e-07, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_2dftf"]
 size = Vector3(5, 5, 5)
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_2dftf"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_bcbcq"]
 data = PackedVector3Array(-2.5, 2.5, 2.5, 2.5, 2.5, 2.5, -2.5, -2.5, 2.5, 2.5, 2.5, 2.5, 2.5, -2.5, 2.5, -2.5, -2.5, 2.5, 2.5, 2.5, -2.5, -2.5, 2.5, -2.5, 2.5, -2.5, -2.5, -2.5, 2.5, -2.5, -2.5, -2.5, -2.5, 2.5, -2.5, -2.5, 2.5, 2.5, 2.5, 2.5, 2.5, -2.5, 2.5, -2.5, 2.5, 2.5, 2.5, -2.5, 2.5, -2.5, -2.5, 2.5, -2.5, 2.5, -2.5, 2.5, -2.5, -2.5, 2.5, 2.5, -2.5, -2.5, -2.5, -2.5, 2.5, 2.5, -2.5, -2.5, 2.5, -2.5, -2.5, -2.5, 2.5, 2.5, 2.5, -2.5, 2.5, 2.5, 2.5, 2.5, -2.5, -2.5, 2.5, 2.5, -2.5, 2.5, -2.5, 2.5, 2.5, -2.5, -2.5, -2.5, 2.5, 2.5, -2.5, 2.5, -2.5, -2.5, -2.5, 2.5, -2.5, 2.5, 2.5, -2.5, -2.5, -2.5, -2.5, -2.5)
 
+[sub_resource type="PrismMesh" id="PrismMesh_bcbcq"]
+left_to_right = 0.0
+size = Vector3(5, 5, 5)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_js7pq"]
+data = PackedVector3Array(-2.5, 2.5, 2.5, 2.5, -2.5, 2.5, -2.5, -2.5, 2.5, -2.5, 2.5, -2.5, -2.5, -2.5, -2.5, 2.5, -2.5, -2.5, -2.5, 2.5, 2.5, -2.5, 2.5, -2.5, 2.5, -2.5, 2.5, -2.5, 2.5, -2.5, 2.5, -2.5, -2.5, 2.5, -2.5, 2.5, -2.5, 2.5, -2.5, -2.5, 2.5, 2.5, -2.5, -2.5, -2.5, -2.5, 2.5, 2.5, -2.5, -2.5, 2.5, -2.5, -2.5, -2.5, -2.5, -2.5, 2.5, 2.5, -2.5, 2.5, -2.5, -2.5, -2.5, 2.5, -2.5, 2.5, 2.5, -2.5, -2.5, -2.5, -2.5, -2.5)
+
 [node name="World" type="Node3D" unique_id=1108411967]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1280964218]
+environment = SubResource("Environment_bcbcq")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2097769246]
 transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0, 0)
@@ -45,13 +60,21 @@ mesh = SubResource("BoxMesh_ehurd")
 surface_material_override/0 = SubResource("StandardMaterial3D_o0y8a")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Ground/NavigationRegion3D" unique_id=254027138]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.055698, 2.1448603, 7.474861)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.055698, 2.782884, 7.474861)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground/NavigationRegion3D/StaticBody3D2" unique_id=641840329]
 mesh = SubResource("BoxMesh_2dftf")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/NavigationRegion3D/StaticBody3D2" unique_id=259203791]
-shape = SubResource("ConcavePolygonShape3D_2dftf")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/NavigationRegion3D/StaticBody3D2" unique_id=1220700743]
+shape = SubResource("ConcavePolygonShape3D_bcbcq")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Ground/NavigationRegion3D/StaticBody3D2" unique_id=868326428]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+mesh = SubResource("PrismMesh_bcbcq")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Ground/NavigationRegion3D/StaticBody3D2" unique_id=288024198]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_js7pq")
 
 [node name="Player" parent="." unique_id=1288974800 instance=ExtResource("1_c6gwx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.840885, 2.2265863, 0)
@@ -62,3 +85,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2007709, 1.8021827)
 [node name="Mask2" parent="." unique_id=619755121 instance=ExtResource("2_2dftf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.515499, 1.2404394, -5.3607254)
 type = 1
+
+[node name="Enemy" parent="." unique_id=501243503 instance=ExtResource("3_bcbcq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5258346, -7.229157)

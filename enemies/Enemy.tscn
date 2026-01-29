@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://b7av5y0wq0swv"]
+
+[ext_resource type="Script" uid="uid://ccl5hulwsufgt" path="res://enemies/enemy_controller.gd" id="1_xkw1x"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ogxq4"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ogxq4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xkw1x"]
+albedo_color = Color(1, 0, 0, 1)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 10.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_43lb5"]
+material = SubResource("StandardMaterial3D_xkw1x")
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="Enemy" type="CharacterBody3D" unique_id=501243503]
+wall_min_slide_angle = 0.0
+script = ExtResource("1_xkw1x")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=656147368]
+simplify_epsilon = 5.0
+avoidance_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1167840843]
+mesh = SubResource("CapsuleMesh_ogxq4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1369569006]
+shape = SubResource("CapsuleShape3D_ogxq4")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=379892970]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.34680784, -0.36656082)
+mesh = SubResource("BoxMesh_43lb5")
