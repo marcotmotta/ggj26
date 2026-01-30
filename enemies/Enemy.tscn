@@ -18,7 +18,7 @@ emission_energy_multiplier = 10.0
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_xkw1x"]
 radius = 1.2
 
-[node name="Enemy" type="CharacterBody3D" unique_id=501243503]
+[node name="Enemy" type="CharacterBody3D" unique_id=501243503 groups=["enemy"]]
 wall_min_slide_angle = 0.08726646
 floor_block_on_wall = false
 floor_max_angle = 0.08726646

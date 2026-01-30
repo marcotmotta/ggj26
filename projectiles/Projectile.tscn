@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://beodms4ndw3wy"]
+
+[ext_resource type="Script" uid="uid://dth01pmyi62dt" path="res://projectiles/projectile.gd" id="1_eeyek"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_eeyek"]
+radius = 0.25
+height = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eeyek"]
+albedo_color = Color(1, 0, 0, 1)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 5.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_eeyek"]
+radius = 0.25
+
+[node name="Projectile" type="Area3D" unique_id=1443286827]
+script = ExtResource("1_eeyek")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=329836329]
+mesh = SubResource("SphereMesh_eeyek")
+surface_material_override/0 = SubResource("StandardMaterial3D_eeyek")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2058564968]
+shape = SubResource("SphereShape3D_eeyek")
+
+[node name="Timer" type="Timer" parent="." unique_id=608246694]
+wait_time = 5.0
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

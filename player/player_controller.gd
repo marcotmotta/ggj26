@@ -14,6 +14,9 @@ extends CharacterBody3D
 
 var curr_mask_type = null
 
+# Projectiles
+@onready var projectile_scene = preload("res://projectiles/Projectile.tscn")
+
 func _process(delta):
 	# Align to camera direction.
 	visual.rotation.y = lerp_angle(visual.rotation.y, cam_yaw_pivot.global_rotation.y, turn_speed * delta)
@@ -80,6 +83,17 @@ func add_mask(type):
 
 	curr_mask_type = type
 
+func _input(event):
+	if event.is_action_pressed("m1"):
+		throw_projectile()
+
+func throw_projectile():
+	var projectile_instance = projectile_scene.instantiate()
+
+	projectile_instance.global_position = global_position
+	projectile_instance.direction = -global_transform.basis.z
+
+	get_parent().add_child(projectile_instance)
+
 func take_damage(amount):
-	print(amount)
 	health = max(0, health - amount)

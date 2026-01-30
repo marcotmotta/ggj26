@@ -11,6 +11,9 @@ var player: Node3D
 
 var type = game_state.types_of_masks.onca
 
+@onready var max_health = 100
+@onready var health = 100
+
 func _ready():
 	# Get player node
 	player = get_tree().get_first_node_in_group("player")
@@ -55,6 +58,12 @@ func take_knockback(from_position: Vector3, force: float):
 	
 	knockback_velocity = direction * force
 	velocity.y = force * 0.2
+
+func take_damage(amount):
+	health = max(0, health - amount)
+
+	if health <= 0:
+		queue_free()
 
 func _on_hit_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group('player'):
