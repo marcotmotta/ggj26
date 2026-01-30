@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://w3ywca3d08hw"]
 
 [ext_resource type="Script" uid="uid://blm0axussbowo" path="res://player/player_controller.gd" id="1_3c3w1"]
-[ext_resource type="PackedScene" uid="uid://bn6wa1w84y8p6" path="res://player/player_model.tscn" id="2_83hs8"]
+[ext_resource type="PackedScene" uid="uid://bnevs3velih7g" path="res://player/PlayerModel.tscn" id="2_83hs8"]
 [ext_resource type="Script" uid="uid://b8hwr560i6myv" path="res://player/camera_controller.gd" id="2_wnvi2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ehurd"]
-size = Vector3(0.5703125, 1.5, 0.47460938)
+size = Vector3(0.5703125, 1.2451172, 0.47460938)
 
 [sub_resource type="BoxMesh" id="BoxMesh_o0y8a"]
 
@@ -48,8 +48,8 @@ shape = SubResource("BoxShape3D_ehurd")
 
 [node name="Visual" type="Node3D" parent="." unique_id=1030887568]
 
-[node name="teste" parent="Visual" unique_id=2109948679 instance=ExtResource("2_83hs8")]
-transform = Transform3D(-0.2, 0, -1.7484556e-08, 0, 0.2, 0, 1.7484556e-08, 0, -0.2, 0, -0.49781907, 0)
+[node name="PlayerModel" parent="Visual" unique_id=2092311799 instance=ExtResource("2_83hs8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.3595571, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Visual" unique_id=1625924876]
 visible = false

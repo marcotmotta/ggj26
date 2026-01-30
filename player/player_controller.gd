@@ -3,7 +3,7 @@ extends CharacterBody3D
 @export var move_speed := 10.0
 @export var jump_velocity := 25
 @export var gravity := 50.0
-@export var turn_speed := 12.0
+@export var turn_speed := 5.0
 
 @onready var cam_yaw_pivot := $CameraRig/Center/YawPivot
 @onready var visual := $Visual
@@ -51,7 +51,9 @@ func _physics_process(delta):
 
 	# Vertical movement.
 	if is_on_floor():
+		$Visual/PlayerModel/AnimationPlayer.play("mixamo_com")
 		if Input.is_action_just_pressed("jump"):
+			$Visual/PlayerModel/AnimationPlayer.play("Jumping/mixamo_com")
 			velocity.y = jump_velocity
 
 	else:

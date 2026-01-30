@@ -9,10 +9,11 @@
 glow_enabled = true
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_2dftf"]
-vertices = PackedVector3Array(-24.5, 0.99999905, 5.75, -13.25, 0.99999905, 6, -13, 0.99999905, 4.25, -5.25, 0.99999905, 4.25, -5, 0.99999905, -24.5, -24.5, 0.99999905, -24.5, -3.75, 0.99999905, 4.25, -3.75, 1.999999, 4.75, 24.5, 0.99999905, 4.75, -2.263157, 0.99999905, 4.75, 24.5, 0.99999905, -24.5, -5.5, 3.749999, 5.25, -5.5, 3.749999, 9.5, -3.75, 1.999999, 9.5, -3.75, 1.999999, 5.25, -3.75, 0.99999905, 10.5, -5.75, 0.99999905, 24.5, 24.5, 0.99999905, 24.5, -5.75, 0.99999905, 10.5, -2.263157, 0.99999905, 5.2236843, -2.3374996, 0.99999905, 9.262501, -12.25, 5.749999, 5.25, -12.25, 5.749999, 9.5, -8.200001, 5.749999, 9.5, -6.8500004, 4.999999, 9.5, -6.8500004, 4.999999, 5.25, -8.200001, 5.749999, 5.25, -24.5, 0.99999905, 9, -13.25, 0.99999905, 8.75, -13, 0.99999905, 10.5, -11, 0.99999905, 24.5, -11, 0.99999905, 10.5, -24.5, 0.99999905, 24.5)
+vertices = PackedVector3Array(-24.5, 0.99999905, 5.75, -13.25, 0.99999905, 6, -13, 0.99999905, 4.25, -5.25, 0.99999905, 4.25, -5, 0.99999905, -24.5, -24.5, 0.99999905, -24.5, -3.75, 0.99999905, 4.25, -3.75, 1.999999, 4.75, 24.5, 0.99999905, 4.75, -2.263157, 0.99999905, 4.75, 24.5, 0.99999905, -24.5, -5.5, 3.749999, 5.25, -5.5, 3.749999, 9.5, -3.75, 1.999999, 9.5, -3.75, 1.999999, 5.25, -3.75, 0.99999905, 10.5, -5.75, 0.99999905, 24.5, 24.5, 0.99999905, 24.5, -5.75, 0.99999905, 10.5, -2.263157, 0.99999905, 5.2236843, -2.3374996, 0.99999905, 9.262501, -12.25, 5.499999, 5.25, -12.25, 5.499999, 9.5, -8.200001, 5.499999, 9.5, -6.8500004, 4.999999, 9.5, -6.8500004, 4.999999, 5.25, -8.200001, 5.499999, 5.25, -24.5, 0.99999905, 9, -13.25, 0.99999905, 8.75, -13, 0.99999905, 10.5, -11, 0.99999905, 24.5, -11, 0.99999905, 10.5, -24.5, 0.99999905, 24.5)
 polygons = [PackedInt32Array(0, 2, 1), PackedInt32Array(4, 3, 2), PackedInt32Array(0, 5, 2), PackedInt32Array(2, 5, 4), PackedInt32Array(7, 6, 9), PackedInt32Array(9, 6, 8), PackedInt32Array(6, 3, 4), PackedInt32Array(8, 6, 10), PackedInt32Array(10, 6, 4), PackedInt32Array(14, 13, 11), PackedInt32Array(11, 13, 12), PackedInt32Array(16, 15, 17), PackedInt32Array(17, 15, 8), PackedInt32Array(16, 18, 15), PackedInt32Array(14, 7, 19), PackedInt32Array(19, 7, 9), PackedInt32Array(19, 9, 8), PackedInt32Array(13, 14, 20), PackedInt32Array(20, 14, 19), PackedInt32Array(20, 19, 8), PackedInt32Array(13, 20, 15), PackedInt32Array(15, 20, 8), PackedInt32Array(12, 24, 11), PackedInt32Array(11, 24, 25), PackedInt32Array(25, 24, 23), PackedInt32Array(25, 23, 26), PackedInt32Array(26, 23, 22), PackedInt32Array(26, 22, 21), PackedInt32Array(28, 27, 1), PackedInt32Array(1, 27, 0), PackedInt32Array(27, 28, 29), PackedInt32Array(29, 31, 30), PackedInt32Array(27, 29, 32), PackedInt32Array(32, 29, 30), PackedInt32Array(31, 18, 30), PackedInt32Array(30, 18, 16)]
 agent_height = 5.0
-agent_max_climb = 1.0
+agent_max_climb = 2.0
+agent_max_slope = 90.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k5hrn"]
 size = Vector3(50, 1, 50)
@@ -61,7 +62,7 @@ mesh = SubResource("BoxMesh_ehurd")
 surface_material_override/0 = SubResource("StandardMaterial3D_o0y8a")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Ground/NavigationRegion3D" unique_id=254027138]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.055698, 2.782884, 7.474861)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.055698, 2.5845773, 7.474861)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground/NavigationRegion3D/StaticBody3D2" unique_id=641840329]
 mesh = SubResource("BoxMesh_2dftf")
