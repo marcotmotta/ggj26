@@ -3,22 +3,10 @@
 [ext_resource type="Script" uid="uid://blm0axussbowo" path="res://player/player_controller.gd" id="1_3c3w1"]
 [ext_resource type="PackedScene" uid="uid://bnevs3velih7g" path="res://player/PlayerModel.tscn" id="2_83hs8"]
 [ext_resource type="Script" uid="uid://b8hwr560i6myv" path="res://player/camera_controller.gd" id="2_wnvi2"]
+[ext_resource type="PackedScene" uid="uid://bk0p2efeqwuho" path="res://mask/beija_flor.tscn" id="3_83hs8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ehurd"]
 size = Vector3(0.5703125, 1.2451172, 0.47460938)
-
-[sub_resource type="BoxMesh" id="BoxMesh_o0y8a"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3c3w1"]
-albedo_color = Color(1, 0, 0, 1)
-emission_enabled = true
-emission = Color(1, 0, 0, 1)
-emission_energy_multiplier = 5.0
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_wnvi2"]
-material = SubResource("StandardMaterial3D_3c3w1")
-size = Vector2(1, 1)
-orientation = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wnvi2"]
 albedo_color = Color(0, 0, 1, 1)
@@ -51,21 +39,15 @@ shape = SubResource("BoxShape3D_ehurd")
 [node name="PlayerModel" parent="Visual" unique_id=2092311799 instance=ExtResource("2_83hs8")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.3595571, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Visual" unique_id=1625924876]
-visible = false
-mesh = SubResource("BoxMesh_o0y8a")
-
 [node name="MaskHandler" type="Node3D" parent="Visual" unique_id=599463333]
 
 [node name="Center" type="Node3D" parent="Visual/MaskHandler" unique_id=565992065]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 
 [node name="Mask1" type="Node3D" parent="Visual/MaskHandler/Center" unique_id=1874216611]
 visible = false
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Visual/MaskHandler/Center/Mask1" unique_id=1766821095]
-transform = Transform3D(0.555, 0, 0, 0, 0.5360888, -0.14364457, 0, 0.14364457, 0.5360888, 0, 0, 0)
-mesh = SubResource("PlaneMesh_wnvi2")
+[node name="BeijaFlor" parent="Visual/MaskHandler/Center/Mask1" unique_id=1085238544 instance=ExtResource("3_83hs8")]
 
 [node name="Mask2" type="Node3D" parent="Visual/MaskHandler/Center" unique_id=101488718]
 visible = false
