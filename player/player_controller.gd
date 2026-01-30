@@ -5,16 +5,17 @@ extends CharacterBody3D
 @export var gravity := 50.0
 @export var turn_speed := 5.0
 
+@onready var cam := $CameraRig/Center/YawPivot/PitchPivot/Camera3D
 @onready var cam_yaw_pivot := $CameraRig/Center/YawPivot
+@onready var health_bar := $CameraRig/CanvasLayer/HealthBar
 @onready var visual := $Visual
 
 @onready var max_health = 100
 @onready var health = 100
-@onready var healthbar = $CameraRig/CanvasLayer/HealthBar
 
 var curr_mask_type = null
 
-# Projectiles
+# Projectiles.
 @onready var projectile_beijaflor_scene = preload("res://projectiles/ProjectileBeijaFlor.tscn")
 @onready var projectile_tartaruga_scene = preload("res://projectiles/ProjectileTartaruga.tscn")
 @onready var projectile_garca_scene = preload("res://projectiles/ProjectileGarca.tscn")
@@ -27,13 +28,13 @@ func _process(delta):
 	# Align to camera direction.
 	visual.rotation.y = lerp_angle(visual.rotation.y, cam_yaw_pivot.global_rotation.y, turn_speed * delta)
 
-	# Update UI
-	healthbar.max_value = max_health
-	healthbar.value = health
+	# Update UI.
+	health_bar.max_value = max_health
+	health_bar.value = health
 
 func _physics_process(delta):
-	var input_dir := Vector2.ZERO
-	var movement_dir := Vector3.ZERO
+	var input_dir = Vector2.ZERO
+	var movement_dir = Vector3.ZERO
 
 	input_dir.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	input_dir.y = Input.get_action_strength("move_forward") - Input.get_action_strength("move_back")
@@ -58,6 +59,7 @@ func _physics_process(delta):
 	# Vertical movement.
 	if is_on_floor():
 		$Visual/PlayerModel/AnimationPlayer.play("mixamo_com")
+
 		if Input.is_action_just_pressed("jump"):
 			$Visual/PlayerModel/AnimationPlayer.play("Jumping/mixamo_com")
 			velocity.y = jump_velocity
@@ -66,6 +68,10 @@ func _physics_process(delta):
 		velocity.y -= gravity * delta
 
 	move_and_slide()
+
+func _input(event):
+	if event.is_action_pressed("m1") and curr_mask_type != null: # Must have mask to shoot!?
+		throw_projectile()
 
 func remove_current_mask():
 	for mask in $Visual/MaskHandler/Masks.get_children():
@@ -94,9 +100,19 @@ func add_mask(type):
 
 	curr_mask_type = type
 
-func _input(event):
-	if event.is_action_pressed("m1") and curr_mask_type != null: # must have mask to shoot (?)
-		throw_projectile()
+func get_camera_aim_point(max_distance = 1000.0):
+	var viewport = get_viewport()
+	var screen_center = viewport.get_visible_rect().size * 0.5
+	var ray_origin = cam.project_ray_origin(screen_center)
+	var ray_direction = cam.project_ray_normal(screen_center)
+	var query = PhysicsRayQueryParameters3D.create(ray_origin, ray_origin + ray_direction * max_distance)
+	query.exclude = [self]
+	var result := get_world_3d().direct_space_state.intersect_ray(query)
+
+	if result:
+		return result.position
+	else:
+		return ray_origin + ray_direction * max_distance
 
 func throw_projectile():
 	var projectile_instance
@@ -118,7 +134,7 @@ func throw_projectile():
 			projectile_instance = projectile_peixe_scene.instantiate()
 
 	projectile_instance.global_position = global_position
-	projectile_instance.direction = -global_transform.basis.z
+	projectile_instance.direction = (get_camera_aim_point() - global_position).normalized()
 	projectile_instance.type = curr_mask_type
 
 	get_parent().add_child(projectile_instance)
