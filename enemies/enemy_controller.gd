@@ -16,10 +16,10 @@ var type = game_state.types_of_masks.onca
 @onready var health = 100
 
 func _ready():
-	# Get player node
+	# Get player node.
 	player = get_tree().get_first_node_in_group("player")
 
-	# Wait for navigation to be ready
+	# Wait for navigation to be ready.
 	await get_tree().physics_frame
 
 	$MeshInstance3D2.set_surface_override_material(0, $MeshInstance3D2.get_surface_override_material(0).duplicate())
@@ -36,7 +36,7 @@ func _physics_process(delta):
 	var next_point = nav_agent.get_next_path_position()
 	var direction = (next_point - global_position).normalized()
 
-	# Apply gravity
+	# Apply gravity.
 	if not is_on_floor():
 		velocity.y -= fall_gravity * delta
 
@@ -45,12 +45,14 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-	# Decay knockback over time
+	# Decay knockback over time.
 	knockback_velocity = knockback_velocity.lerp(Vector3.ZERO, knockback_friction * delta)
 
-	# Face movement direction
-	if direction.length() > 0.1:
-		look_at(Vector3((global_position + direction).x, global_position.y, (global_position + direction).z))
+	# Face movement direction.
+	var target_position = global_position + Vector3(direction.x, 0, direction.z)
+#
+	if global_position.distance_to(target_position) > 0.01:
+		look_at(target_position)
 
 func take_knockback(from_position: Vector3, force: float = knockback_force):
 	var direction = (global_position - from_position).normalized()
